@@ -9,7 +9,7 @@ module Authorization
     def should_not_be_authorized_for(name, options={})
       should "not be authorized for #{name}" do
         call_route(name, options)
-        assert_redirected_to "session/new"
+        assert_redirected_to unauthorized_page_path
       end
     end
 
@@ -83,6 +83,10 @@ module Authorization
         else
           get action, options
         end
+      end
+      
+      def unauthorized_page_path
+        'session/new'
       end
     end
   end
