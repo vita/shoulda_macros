@@ -2,29 +2,29 @@
 
 Shoulda macros for authorization testing:
 
-	should_be_authorized_for
-	should_be_authorized_for_actions
-	should_not_be_authorized_for
-	should_not_be_authorized_for_actions
+ should_be_authorized_for
+ should_be_authorized_for_actions
+ should_not_be_authorized_for
+ should_not_be_authorized_for_actions
 
-==Example of test
+==Examples
 
-	context 'A competent user' do
-		setup {login_as :admin}
-
-		should_be_authorized_for_actions :index, :new, [:edit, {:id => 1}]
-
-	end
-
-	context 'An uncompetent user' do
-		setup {login_as :test}
-
-		should_not_be_authorized_for_actions :index,
-                                         :new,
-                                         [:edit, {:id => 1}],
-                                         [:create, {:method => :post}],
-                                         [:update, {:method => :put, :id =>11}]
-	end
+ context 'A competent user' do
+   setup {login_as :admin}
+ 
+   should_be_authorized_for_actions :index, :new, [:edit, {:id => 1}]
+ 
+ end
+ 
+ context 'An uncompetent user' do
+   setup {login_as :test}
+ 
+   should_not_be_authorized_for_actions :index,
+                                        :new,
+                                        [:edit, {:id => 1}],
+                                        [:create, {:method => :post}],
+                                        [:update, {:method => :put, :id =>11}]
+ end
 
 ===TODO
 
